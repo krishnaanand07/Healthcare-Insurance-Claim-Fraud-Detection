@@ -1,0 +1,53 @@
+.metricsContainer {
+  margin-top: 3rem;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.metricsContainer .cardHeader {
+  margin-bottom: 1.5rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--glass-border);
+}
+
+.metricsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.metricsTable th {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.metricsTable td {
+  padding: 1rem 1.5rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.metricsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.metricsTable tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.highlightRow {
+  background: rgba(8, 145, 178, 0.08) !important;
+}
+
+.highlightRow td {
+  color: var(--accent-cyan);
+  font-weight: 500;
+}

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { predictFraud } from '../api';
+import styles from './ClaimForm.module.css';
 
 const ClaimForm = ({ onResult, setLoading }) => {
   const [formData, setFormData] = useState({
     patient_age: '45',
     gender: '0',
-    patient_city: '101',
-    provider_city: '202',
-    diagnosis_code: '505',
-    procedure_code: '909',
     claim_amount: '1500.00',
     deductible: '250.00',
     copay: '50.00',
@@ -29,12 +26,8 @@ const ClaimForm = ({ onResult, setLoading }) => {
         Claim_Amount: parseFloat(formData.claim_amount) || 0,
         Patient_Age: parseInt(formData.patient_age) || 0,
         Patient_Gender: parseInt(formData.gender) || 0,
-        Patient_City: parseInt(formData.patient_city) || 0,
         Patient_State: 0,
-        Provider_City: parseInt(formData.provider_city) || 0,
         Provider_State: 0,
-        Diagnosis_Code: parseInt(formData.diagnosis_code) || 0,
-        Procedure_Code: parseInt(formData.procedure_code) || 0,
         Number_of_Procedures: 1,
         Admission_Type: 0,
         Length_of_Stay_Days: 1,
@@ -78,61 +71,43 @@ const ClaimForm = ({ onResult, setLoading }) => {
   };
 
   return (
-    <form className="analysis-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
-        <div className="form-group">
+    <form className={styles.analysisForm} onSubmit={handleSubmit}>
+      <div className={styles.formGrid}>
+        <div className={styles.formGroup}>
           <label>Patient Age</label>
           <input type="number" name="patient_age" value={formData.patient_age} onChange={handleChange} required />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Gender</label>
           <select name="gender" value={formData.gender} onChange={handleChange}>
             <option value="0">Male</option>
             <option value="1">Female</option>
           </select>
         </div>
-        <div className="form-group">
-          <label>City Code</label>
-          <input type="number" name="patient_city" value={formData.patient_city} onChange={handleChange} required />
-        </div>
-        
-        <div className="form-group">
-          <label>Provider City Code</label>
-          <input type="number" name="provider_city" value={formData.provider_city} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Diagnosis Code</label>
-          <input type="number" name="diagnosis_code" value={formData.diagnosis_code} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Procedure Code</label>
-          <input type="number" name="procedure_code" value={formData.procedure_code} onChange={handleChange} required />
-        </div>
-
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Claim Amount ($)</label>
           <input type="number" name="claim_amount" step="0.01" value={formData.claim_amount} onChange={handleChange} required />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Deductible ($)</label>
           <input type="number" name="deductible" step="0.01" value={formData.deductible} onChange={handleChange} required />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>CoPay ($)</label>
           <input type="number" name="copay" step="0.01" value={formData.copay} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Claim Month (1-12)</label>
           <input type="number" name="claim_month" min="1" max="12" value={formData.claim_month} onChange={handleChange} required />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label>Claim Year</label>
           <input type="number" name="claim_year" value={formData.claim_year} onChange={handleChange} required />
         </div>
       </div>
 
-      <button type="submit" className="btn-primary">
+      <button type="submit" className={styles.btnPrimary}>
         Run Predictive Analysis
       </button>
     </form>

@@ -40,12 +40,8 @@ class ClaimFeatures(BaseModel):
     Claim_Amount: float
     Patient_Age: int
     Patient_Gender: int
-    Patient_City: int
     Patient_State: int
-    Provider_City: int
     Provider_State: int
-    Diagnosis_Code: int
-    Procedure_Code: int
     Number_of_Procedures: int
     Admission_Type: int
     Length_of_Stay_Days: int
@@ -106,8 +102,7 @@ def predict_fraud(claim: ClaimFeatures):
     
     # Define features to scale based on notebook
     scale_columns = [
-        'Claim_Amount', 'Patient_Age', 'Patient_City', 'Provider_City',
-        'Diagnosis_Code', 'Procedure_Code', 'Number_of_Procedures',
+        'Claim_Amount', 'Patient_Age', 'Number_of_Procedures',
         'Length_of_Stay_Days', 'Deductible_Amount', 'CoPay_Amount',
         'Number_of_Previous_Claims_Patient', 'Number_of_Previous_Claims_Provider',
         'Provider_Patient_Distance_Miles', 'Claim_Year', 'Claim_Month', 'Claim_Delay_Days'
