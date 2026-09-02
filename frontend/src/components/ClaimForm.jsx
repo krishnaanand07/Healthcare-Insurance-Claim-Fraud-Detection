@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { predictFraud } from '../api';
 import styles from './ClaimForm.module.css';
 
-const ClaimForm = ({ onResult, setLoading }) => {
+const ClaimForm = ({ onResult, setLoading, onError }) => {
   const [formData, setFormData] = useState({
     patient_age: '45',
     gender: '0',
@@ -21,6 +21,7 @@ const ClaimForm = ({ onResult, setLoading }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (onError) onError(null);
     try {
       const payload = {
         Claim_Amount: parseFloat(formData.claim_amount) || 0,
@@ -65,6 +66,7 @@ const ClaimForm = ({ onResult, setLoading }) => {
       onResult(result);
     } catch (error) {
       console.error("Analysis failed", error);
+      if (onError) onError(error.message || "Failed to analyze claim. Ensure backend server is running.");
     } finally {
       setLoading(false);
     }

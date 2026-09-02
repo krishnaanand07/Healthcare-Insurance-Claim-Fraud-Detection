@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './PredictionResult.module.css';
 
 const PredictionResult = ({ data }) => {

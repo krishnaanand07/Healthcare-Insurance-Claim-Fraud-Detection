@@ -2,7 +2,8 @@ import joblib
 import os
 import traceback
 
-pkl_file = r"D:\1.Tekworks\Project\Healthcare Insurance Claim\Backend\6.Artifacts\random_forest.pkl"
+artifacts_dir = os.path.join(os.path.dirname(__file__), "6.Artifacts")
+pkl_file = os.path.join(artifacts_dir, "random_forest.pkl")
 
 print(f"--- Loading {os.path.basename(pkl_file)} with joblib ---")
 try:
